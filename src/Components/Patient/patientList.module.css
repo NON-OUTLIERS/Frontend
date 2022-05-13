@@ -2,3 +2,27 @@
     width: 95%;
     margin: auto;
 }
+
+.clr {
+    background-color: #e5dfdf;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: 12%;
+    border-radius: 8px;
+  }
+  
+  h3{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #d73dcb;
+    font-weight: bold;
+  }
+  .flitm{
+    margin-left: -200px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .img{
+      width: 7%;
+  }

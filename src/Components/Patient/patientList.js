@@ -11,14 +11,17 @@ const arrayOfObjects = [
   { patientName: "Someone 5", patientID: "5555", status: "E" },
   { patientName: "Someone 6", patientID: "6666", status: "F" }
 ];
+const logo = require('./logo.png');
+
 function patientList() {
     return (
       <div className={styles.container}>
         {arrayOfObjects.map(({ patientName, patientID, status }) => (
-        <div className="card clr" key = {patientID}>
+        <div className={styles.clr} key = {patientID}>
           <div className="card-body">
             <div className="d-flex justify-content-between">
-            <div className="p-2 col-example text-left flitm">Name-{patientName}</div>
+            <img className={styles.img} src={logo} alt="Logo"/>
+            <div className={styles.flitm} >Name-{patientName}</div>
             <div className="p-2 col-example text-left flitm">ID-{patientID}</div>
             <div className="p-2 col-example text-left flitm">Status-{status}</div>
             </div>
