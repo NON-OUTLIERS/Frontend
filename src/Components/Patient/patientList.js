@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import styles from './patientList.module.css';
 
 
 const arrayOfObjects = [
@@ -13,11 +13,10 @@ const arrayOfObjects = [
 ];
 function patientList() {
     return (
-      <div className="container">
-        <h3 className="text-center">Patient's List</h3>
+      <div className={styles.container}>
         {arrayOfObjects.map(({ patientName, patientID, status }) => (
-        <div class="card clr">
-          <div class="card-body">
+        <div className="card clr" key = {patientID}>
+          <div className="card-body">
             <div className="d-flex justify-content-between">
             <div className="p-2 col-example text-left flitm">Name-{patientName}</div>
             <div className="p-2 col-example text-left flitm">ID-{patientID}</div>
