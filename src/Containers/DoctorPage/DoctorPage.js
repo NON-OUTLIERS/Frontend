@@ -5,15 +5,19 @@ import styles from './DoctorPage.module.css';
 import PatientList from '../../Components/Patient/patientList';
 import Schedule from '../Schedule/Schedule';
 import SideDrawer from "../../Components/SideDrawer/SideDrawer";
+import TopNavBar from '../../Components/Navigation/TopNavbar/TopNavBar';
+import profile from '../../assets/Images/user.png';
 
 const DoctorPage = props => {
+    //storing patientlist in the state patientList
     const [patientList, setPatientList] = useState([]);
+    //storing the errors in the errors state
     const [errors, setErrors] = useState(null);
 
     let content = null;
     const patients = [
         {
-            img: '#',
+            img: profile,
             patientName: 'Umesh',
             date: {
                 day: 20,
@@ -24,7 +28,7 @@ const DoctorPage = props => {
             status: 1
         },
         {
-            img: '#',
+            img: profile,
             patientName: 'Umesh',
             date: {
                 day: 20,
@@ -35,7 +39,7 @@ const DoctorPage = props => {
             status: 0
         },
         {
-            img: '#',
+            img: profile,
             patientName: 'Umesh',
             date: {
                 day: 20,
@@ -46,7 +50,7 @@ const DoctorPage = props => {
             status: 1
         },
         {
-            img: '#',
+            img: profile,
             patientName: 'Umesh',
             date: {
                 day: 20,
@@ -57,7 +61,8 @@ const DoctorPage = props => {
             status: 0
         }
     ]
-    let error = errors ? <div className = {styles.error}>{errors.message}</div> : null
+
+    //getting the patient data associated with the doctor from the backend
     const getPatientData = async () => {
         try{
             const response = await axios.get('#');
@@ -68,6 +73,7 @@ const DoctorPage = props => {
         }
     }
 
+    //checking the page to be displayed for the doctor...
     if(props.show === 'patients'){
         content = <PatientList />;
     }
@@ -82,12 +88,9 @@ const DoctorPage = props => {
                 link1 = 'Schedule' 
                 link2 = 'Patients'/>
             <div id = {styles.leftDiv}>
-                <div id = {styles.headerContainer}>
-                    <div id = {styles.heading}>{props.heading}</div>
-                    <span id = {styles.lineF}></span>   
-                </div>
+                <TopNavBar heading = {props.heading} img = {profile}/>
                 <div id = {styles.content}>
-                    {errors ? error: content}
+                    {errors ? <h1>error occurred!!!</h1>: content}
                 </div>
             </div>
         </div>

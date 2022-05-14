@@ -2,6 +2,7 @@ import styles from './Schedule.module.css';
 import Card from '../../Components/Util/Cards/Cards';
 
 const Schedule = props => {
+    // cards list initialization...
     let cards = null;
     if(props.patientList.length === 0)
         cards = 'No patient data available!!!';

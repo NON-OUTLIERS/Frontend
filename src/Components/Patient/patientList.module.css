@@ -19,5 +19,6 @@
     margin-bottom: auto;
   }
   .img{
-      width: 7%;
+      width: 4%;
+      border-radius: 50%;
   }

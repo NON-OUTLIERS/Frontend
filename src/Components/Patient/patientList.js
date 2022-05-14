@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './patientList.module.css';
 
+import profile from '../../assets/Images/user.png';
 
 const arrayOfObjects = [
   { patientName: "Someone 1", patientID: "1111", status: "A" },
@@ -11,7 +12,6 @@ const arrayOfObjects = [
   { patientName: "Someone 5", patientID: "5555", status: "E" },
   { patientName: "Someone 6", patientID: "6666", status: "F" }
 ];
-const logo = require('../../assets/Images/logo.png');
 
 function patientList() {
     return (
@@ -20,7 +20,7 @@ function patientList() {
         <div className={styles.clr} key = {patientID}>
           <div className="card-body">
             <div className="d-flex justify-content-between">
-            <img className={styles.img} src={logo} alt="Logo"/>
+            <img className={styles.img} src={profile} alt="Logo"/>
             <div className={styles.flitm} ><strong>Name-</strong>{patientName}</div>
             <div className="p-2 col-example text-left flitm"><strong>ID-</strong>{patientID}</div>
             <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status}</div>

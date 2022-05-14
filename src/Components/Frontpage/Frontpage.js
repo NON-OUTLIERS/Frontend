@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 
 import styles from './Frontpage.module.css';
-import Navigation from '../Navigation/Navigation';
+import Navigation from '../Navigation/HorizontalNav/Navigation';
 import React from 'react';
 
 const Frontpage = props => {
