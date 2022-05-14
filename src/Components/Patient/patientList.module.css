@@ -1,23 +1,18 @@
 .container{
     width: 95%;
-    margin: auto;
+    /* margin: auto; */
+    color: #11698E;
 }
 
 .clr {
-    background-color: #e5dfdf;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 80%;
     margin-left: 12%;
     border-radius: 8px;
+    box-shadow: 0px 0px 5px 3px #E7D9EA;
   }
   
-  h3{
-    margin-top: 20px;
-    margin-bottom: 40px;
-    color: #d73dcb;
-    font-weight: bold;
-  }
   .flitm{
     margin-left: -200px;
     margin-top: auto;

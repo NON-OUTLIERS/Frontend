@@ -13,9 +13,12 @@
   padding: 0px;
 }
 
+body{
+  overflow-x: hidden; 
+}
+
 .App{
   font-family: myFont2;
-  overflow-x: hidden; 
   width: 100vw;
   margin: auto;
 }
