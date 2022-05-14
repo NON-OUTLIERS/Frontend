@@ -11,7 +11,7 @@ const arrayOfObjects = [
   { patientName: "Someone 5", patientID: "5555", status: "E" },
   { patientName: "Someone 6", patientID: "6666", status: "F" }
 ];
-const logo = require('./logo.png');
+const logo = require('../../assets/Images/logo.png');
 
 function patientList() {
     return (
@@ -21,9 +21,9 @@ function patientList() {
           <div className="card-body">
             <div className="d-flex justify-content-between">
             <img className={styles.img} src={logo} alt="Logo"/>
-            <div className={styles.flitm} >Name-{patientName}</div>
-            <div className="p-2 col-example text-left flitm">ID-{patientID}</div>
-            <div className="p-2 col-example text-left flitm">Status-{status}</div>
+            <div className={styles.flitm} ><strong>Name-</strong>{patientName}</div>
+            <div className="p-2 col-example text-left flitm"><strong>ID-</strong>{patientID}</div>
+            <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status}</div>
             </div>
         </div>
       </div>
