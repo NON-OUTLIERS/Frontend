@@ -1,11 +1,10 @@
 import styles from './Cards.module.css';
-import logo from '../../../assets/Images/logo2.png';
 
 const card = props => {
     return (
         <div className = {[styles.container, props.status === 1 ? styles.critical: styles.moderate].join(' ')}>
             <div className = {styles.container1}>
-                <img src = {logo} alt = 'profile pic'/>
+                <img src = {props.img} alt = 'profile pic'/>
                 <div className = {styles.name}>{props.patientName}</div>
             </div>
             <div className = {styles.details}>
