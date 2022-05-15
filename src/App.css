@@ -1,0 +1,25 @@
+h1
+{
+  color:#baa6d0;
+}
+ul.no-bullets
+{
+  list-style-type:none;
+  padding:0;
+  margin:0;
+}
+.card
+{
+  width:250px;
+
+}
+.card-body
+{
+background-color: #baa6d0;
+}
+.ss
+{
+  text-align:center;
+  font-size:30px;
+  
+}
