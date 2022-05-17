@@ -7,7 +7,7 @@ import React from 'react';
 const Frontpage = props => {
     return (
         <React.Fragment>
-            <Navigation />
+            <Navigation hide = 'false'/>
             <div className = {styles.coverDiv}>
                 <div id = {styles['displayContainer']}>
                     <p id = {styles.title}>doctorOnDemand</p>
@@ -15,10 +15,10 @@ const Frontpage = props => {
                     <p className = {styles.heading}>Medical &nbsp;Services</p>
                     <p className = {styles.heading}>Trusted &nbsp;by &nbsp;Clients</p>
                     <div id = {styles.btnContainer}>
-                        <NavLink to = '/login/doctor' className = {styles.btnLogin}>
+                        <NavLink to = '/doctor/login' className = {styles.btnLogin}>
                             Login as a doctor
                         </NavLink>
-                        <NavLink to = '/login/patient' className = {styles.btnLogin}>
+                        <NavLink to = '/patient/login' className = {styles.btnLogin}>
                             Login as a patient
                         </NavLink>
                     </div>

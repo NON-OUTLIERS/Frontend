@@ -66,7 +66,7 @@ const DoctorPage = props => {
     const getPatientData = async () => {
         try{
             const response = await axios.get('#');
-            setPatientList(response);
+            setPatientList(response.data);
         }
         catch (e){
             setErrors(e);
@@ -75,7 +75,7 @@ const DoctorPage = props => {
 
     //checking the page to be displayed for the doctor...
     if(props.show === 'patients'){
-        content = <PatientList />;
+        content = <PatientList patients = {patients}/>;
     }
     else{
         content = <Schedule patientList = {patients}/>;
@@ -88,7 +88,7 @@ const DoctorPage = props => {
                 link1 = 'Schedule' 
                 link2 = 'Patients'/>
             <div id = {styles.leftDiv}>
-                <TopNavBar heading = {props.heading} img = {profile}/>
+                <TopNavBar heading = {props.heading} img = {profile} type = 'doctor'/>
                 <div id = {styles.content}>
                     {errors ? <h1>error occurred!!!</h1>: content}
                 </div>

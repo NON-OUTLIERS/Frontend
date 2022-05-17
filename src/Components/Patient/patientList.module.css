@@ -2,6 +2,7 @@
     width: 95%;
     /* margin: auto; */
     color: #11698E;
+    margin-left: 200px;
 }
 
 .clr {
@@ -21,4 +22,20 @@
   .img{
       width: 4%;
       border-radius: 50%;
+  }
+
+  .removeDecoration{
+    text-decoration: none;
+    color: #11698E;
+  }
+
+  .clr{
+    transform: scale(1);
+    transition: transform s ease-in;
+  }
+
+  .clr:hover{
+    color: #11698E;
+    transform: scale(1.05);
+    /* background-color: black; */
   }
