@@ -1,29 +1,30 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useCookies} from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 import Navigation from '../../Navigation/HorizontalNav/Navigation';
 
 const Login = props => {
-  const [email, setEmail] = useState('');
+  const [patientId, setPatientId] = useState('');
   const [password, setPassword] = useState('');
   const [check, setCheck] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [cookies, setCookie, removeCookie] = useCookies(['Doctor']);
+  const [cookies, setCookie, removeCookie] = useCookies(['Patient']);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(cookies.Email){
-      setEmail(cookies.Email);
+    if(cookies.PatientId){
+      setPatientId(cookies.PatientId);
       setCheck(true);
     }
   }, []);
 
+
   const handleChangeEvent = (event, field) => {
     const val = event.target.value;
     switch(field){
-      case 'email': setEmail(val);
+      case 'patientId': setPatientId(val);
                     break;
       case 'password': setPassword(val);
                         break;
@@ -39,28 +40,32 @@ const Login = props => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if(localStorage.getItem('patientId')){
+
+    if(localStorage.getItem('doctorId')){
       localStorage.removeItem('token');
-      localStorage.removeItem('patientId');
+      localStorage.removeItem('doctorId');
     }
+
     if(check){
-      setCookie('Email', email, { path: '/', expires: new Date(new Date().getTime() + 1000*60*180)});
+      setCookie('PatientId', patientId, { path: '/', expires: new Date(new Date().getTime() + 1000*60*180)});
     }
     else{
       console.log('removing cookie');
-      removeCookie('Email');
+      removeCookie('PatientId');
     }
+
+    console.log(password, patientId);
     try{
-      const response = await axios.post('http://localhost:8080/api/doctor/login', {
-        email: email,
+      const response = await axios.post('http://localhost:8080/api/patient/login', {
+        patientId: patientId,
         password: password
       });
 
       console.log(response);
       if(response.status === 200){
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('doctorId', response.data.userId);
-        navigate('/doctor/patients');
+        localStorage.setItem('patientId', response.data.patientID);
+        navigate('/patient/report');
       }
     }
     catch(err){
@@ -74,17 +79,17 @@ const Login = props => {
 
   return (
     <React.Fragment>
-      <Navigation />
+      <Navigation hide = 'false'/>
       <form onSubmit = {submitHandler}>
         <h3>{props.name}</h3>
         <div className="mb-3">
-          <label>Email address</label>
+          <label>Patient ID</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            value = {email}
-            placeholder="abc@domain.com"
-            onChange = {event => handleChangeEvent(event, 'email')}
+            value = {patientId}
+            placeholder="Ex: M00342"
+            onChange = {event => handleChangeEvent(event, 'patientId')}
           />
         </div>
         <div className="mb-3">

@@ -22,3 +22,19 @@
       width: 4%;
       border-radius: 50%;
   }
+
+  .removeDecoration{
+    text-decoration: none;
+    color: #11698E;
+  }
+
+  .clr{
+    transform: scale(1);
+    transition: transform 0.2s ease-in;
+  }
+
+  .clr:hover{
+    color: #11698E;
+    transform: scale(1.05);
+    /* background-color: black; */
+  }

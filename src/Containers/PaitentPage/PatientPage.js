@@ -42,7 +42,7 @@ const PatientPage = props => {
                 link1 = 'Report' 
                 link2 = 'Medicine'/>
             <div id = {styles.leftDiv}>
-                <TopNavBar heading = {props.heading} img = {profile}/>
+                <TopNavBar heading = {props.heading} img = {profile} type = 'patient'/>
                 <div id = {styles.content}>
                     {errors ? <h1>error occurred!!!</h1>: content}
                 </div>

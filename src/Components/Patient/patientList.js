@@ -1,32 +1,26 @@
-import React from 'react'
+import {NavLink} from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './patientList.module.css';
-
 import profile from '../../assets/Images/user.png';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const arrayOfObjects = [
-  { patientName: "Someone 1", patientID: "1111", status: "A" },
-  { patientName: "Someone 2", patientID: "2222", status: "B" },
-  { patientName: "Someone 3", patientID: "3333", status: "C" },
-  { patientName: "Someone 4", patientID: "4444", status: "D" },
-  { patientName: "Someone 5", patientID: "5555", status: "E" },
-  { patientName: "Someone 6", patientID: "6666", status: "F" }
-];
-
-function patientList() {
+function patientList(props) {
     return (
       <div className={styles.container}>
-        {arrayOfObjects.map(({ patientName, patientID, status }) => (
-        <div className={styles.clr} key = {patientID}>
-          <div className="card-body">
-            <div className="d-flex justify-content-between">
-            <img className={styles.img} src={profile} alt="Logo"/>
-            <div className={styles.flitm} ><strong>Name-</strong>{patientName}</div>
-            <div className="p-2 col-example text-left flitm"><strong>ID-</strong>{patientID}</div>
-            <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status}</div>
+        {props.patients.map(({ patientName, patientId, status }) => (
+          <NavLink to = {'/view-report/' + patientId} key = {patientId} className = {styles.removeDecoration}>
+            <div className={styles.clr}>
+              <div className="card-body">
+                <div className="d-flex justify-content-between">
+                  <img className={styles.img} src={profile} alt="Logo"/>
+                  <div className={styles.flitm} ><strong>Name-</strong>{patientName}</div>
+                  <div className="p-2 col-example text-left flitm"><strong>ID-</strong>{patientId}</div>
+                  <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status}</div>
+                </div>
+              </div>
             </div>
-        </div>
-      </div>
+          </NavLink>
       ))}
       </div>
       

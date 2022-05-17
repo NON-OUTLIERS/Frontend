@@ -25,7 +25,7 @@ const Report = props => {
                 </div>
             </div>
             <div id = {styles.imageContainer}>
-                <img src = {props.img} alt = 'profile-image' />
+                <img src = {props.img} alt = 'profile' />
             </div>
         </div>
     );
