@@ -4,6 +4,8 @@ import styles from './PatientPage.module.css';
 import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 import TopNavBar from '../../Components/Navigation/TopNavbar/TopNavBar';
 import Report from '../../Components/Report/Report';
+import MedicineScheduler from  '../../Components/Medicine Scheduler/Medicine';
+
 import profile from '../../assets/Images/user.png';
 
 const PatientPage = props => {
@@ -33,7 +35,7 @@ const PatientPage = props => {
     if(props.show === 'report')
         content = <Report {...fakeReport}/>
     else
-        content = <h1>Medicine scheduler</h1>
+        content = <MedicineScheduler />
 
     return (
         <div id = {styles.viewBox}>
