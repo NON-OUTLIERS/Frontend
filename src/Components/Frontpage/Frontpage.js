@@ -15,11 +15,11 @@ const Frontpage = props => {
                     <p className = {styles.heading}>Medical &nbsp;Services</p>
                     <p className = {styles.heading}>Trusted &nbsp;by &nbsp;Clients</p>
                     <div id = {styles.btnContainer}>
-                        <NavLink to = '/doctor/login' className = {styles.btnLogin}>
-                            Login as a doctor
+                        <NavLink to = {localStorage.doctorId ? '/doctor/all-patients' : '/doctor/login'} className = {styles.btnLogin}>
+                            {localStorage.doctorId ? "Visit the Doctor's Dashboard" : "Login as a doctor"}
                         </NavLink>
-                        <NavLink to = '/patient/login' className = {styles.btnLogin}>
-                            Login as a patient
+                        <NavLink to = {localStorage.patientId ? '/patient/report' :'/patient/login'} className = {styles.btnLogin}>
+                            {localStorage.patientId ? "Visit the Patient Dashboard" : "Login as a patient"}
                         </NavLink>
                     </div>
                 </div>
