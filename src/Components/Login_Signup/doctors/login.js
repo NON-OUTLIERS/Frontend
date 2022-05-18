@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useCookies} from 'react-cookie';
+import styles from './Login.module.css';
 
 import Navigation from '../../Navigation/HorizontalNav/Navigation';
 
@@ -16,6 +17,7 @@ const Login = props => {
   useEffect(() => {
     if(cookies.Email){
       setEmail(cookies.Email);
+      setPassword(cookies.password);
       setCheck(true);
     }
   }, []);
@@ -45,9 +47,11 @@ const Login = props => {
     }
     if(check){
       setCookie('Email', email, { path: '/', expires: new Date(new Date().getTime() + 1000*60*180)});
+      setCookie('password', password, { path: '/', expires: new Date(new Date().getTime() + 1000*60*180)});
     }
     else{
       console.log('removing cookie');
+      removeCookie('password');
       removeCookie('Email');
     }
     try{
@@ -60,7 +64,7 @@ const Login = props => {
       if(response.status === 200){
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('doctorId', response.data.userId);
-        navigate('/doctor/patients');
+        navigate('/doctor/all-patients');
       }
     }
     catch(err){
@@ -73,7 +77,7 @@ const Login = props => {
   }
 
   return (
-    <React.Fragment>
+    <div  className = {[styles.outerBox].join(' ')}>
       <Navigation />
       <form onSubmit = {submitHandler}>
         <h3>{props.name}</h3>
@@ -120,7 +124,7 @@ const Login = props => {
           Forgot <a href="#">password?</a>
         </p>
       </form>
-    </React.Fragment>
+    </div>
   );
 }
 

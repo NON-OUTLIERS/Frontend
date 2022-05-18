@@ -7,10 +7,10 @@ import Calendar from '../CalendarComponent';
 
 import med from '../../assets/Images/med.jpeg';
 
-const App=()=> {
+const Medicine= props => {
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-
+  console.log(props.med);
   return (
   <>
   <div className={[styles.container, styles.outerBox].join(' ')}>
@@ -26,8 +26,8 @@ const App=()=> {
   <div className={styles['card-body']}>
     <h5 className="card-title">Before Breakfast</h5>
     <ul className={styles['no-bullets']}>
-      <li>Combiflame   2tbs</li>
-      <li>Parcacetamol   2tbs</li>
+      <li>{props.med[0].name}   {props.med[0].dose}</li>
+      {/* <li>Parcacetamol   1tbs</li> */}
     </ul>
   </div>
 </div></div>
@@ -39,7 +39,7 @@ const App=()=> {
   <div className={styles['card-body']}>
     <h5 className="card-title">After Lunch</h5>
     <ul className={styles['no-bullets']}>
-      <li>Combiflame   2tbs</li>
+    {/* <li>{props.med[1].name}   {props.med[1].dose}</li> */}
       <li>Parcacetamol   2tbs</li>
     </ul>
   </div>
@@ -49,7 +49,7 @@ const App=()=> {
   <div className={styles['card-body']}>
     <h5 className="card-title">After Dinner</h5>
     <ul className={styles['no-bullets']}>
-      <li>Combiflame   2tbs</li>
+    {/* <li>{props.med[2].name}   {props.med[2].dose}</li> */}
       <li>Parcacetamol   2tbs</li>
     </ul>
   </div>
@@ -68,4 +68,4 @@ const App=()=> {
   );
 };
 
-export default App;
+export default Medicine;

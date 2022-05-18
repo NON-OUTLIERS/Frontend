@@ -2,7 +2,6 @@
     width: 95%;
     /* margin: auto; */
     color: #11698E;
-    margin-left: 200px;
 }
 
 .clr {
@@ -31,7 +30,7 @@
 
   .clr{
     transform: scale(1);
-    transition: transform s ease-in;
+    transition: transform 0.2s ease-in;
   }
 
   .clr:hover{

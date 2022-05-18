@@ -2,17 +2,16 @@ import {useState} from 'react';
 import axios from 'axios';
 
 import styles from './DoctorPage.module.css';
-import PatientList from '../../Components/Patient/patientList';
+import PatientList from '../../Components/Patient/PatientList';
 import Schedule from '../Schedule/Schedule';
 import SideDrawer from "../../Components/SideDrawer/SideDrawer";
 import TopNavBar from '../../Components/Navigation/TopNavbar/TopNavBar';
+import Loader from '../../Components/Util/Loader/Loader';
 import profile from '../../assets/Images/user.png';
 
 const DoctorPage = props => {
     //storing patientlist in the state patientList
-    const [patientList, setPatientList] = useState([]);
-    //storing the errors in the errors state
-    const [errors, setErrors] = useState(null);
+    
 
     let content = null;
     const patients = [
@@ -63,34 +62,29 @@ const DoctorPage = props => {
     ]
 
     //getting the patient data associated with the doctor from the backend
-    const getPatientData = async () => {
-        try{
-            const response = await axios.get('#');
-            setPatientList(response.data);
-        }
-        catch (e){
-            setErrors(e);
-        }
-    }
+    
 
     //checking the page to be displayed for the doctor...
     if(props.show === 'patients'){
-        content = <PatientList patients = {patients}/>;
+        content = <PatientList/>;
     }
-    else{
-        content = <Schedule patientList = {patients}/>;
+    else if(props.show === 'schedule'){
+        content = <Schedule/>;
     }
+    else
+        content = <h1>Under development!!!</h1>
 
     return (
         <div id = {styles.viewBox}>
             <SideDrawer 
                 view = 'doctor' 
-                link1 = 'Schedule' 
-                link2 = 'Patients'/>
+                link1 = 'Queue' 
+                link2 = 'All-Patients'
+                link3 = 'Appointments'/>
             <div id = {styles.leftDiv}>
                 <TopNavBar heading = {props.heading} img = {profile} type = 'doctor'/>
                 <div id = {styles.content}>
-                    {errors ? <h1>error occurred!!!</h1>: content}
+                    {content}
                 </div>
             </div>
         </div>

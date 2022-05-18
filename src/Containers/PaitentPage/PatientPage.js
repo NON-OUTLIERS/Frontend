@@ -1,41 +1,57 @@
-import {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 import styles from './PatientPage.module.css';
 import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 import TopNavBar from '../../Components/Navigation/TopNavbar/TopNavBar';
 import Report from '../../Components/Report/Report';
 import MedicineScheduler from  '../../Components/Medicine Scheduler/Medicine';
+import Loader from '../../Components/Util/Loader/Loader';
 
 import profile from '../../assets/Images/user.png';
 
 const PatientPage = props => {
     const [patientReport, setPatientReport] = useState({});
+    const [medicines, setMedicines] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(null);
+    
+    const getReportData = async () => {
+        try{
+            setIsLoading(true);
+            const response = await axios.get('http://localhost:8080/api/patient/', {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.token,
+                }
+            });
+            console.log(response)
+            if(response.status === 200){
+                setPatientReport({...response.data[0], img: profile});
+                setMedicines(() => {
+                    return response.data[0].medicines});
+            }
+            else
+                setErrors(new Error('Could not find patient'));
+            setIsLoading(false);
+        }
+        catch(err){
+            console.log(err);
+            setErrors(err.message);
+            setIsLoading(false);
+        }
+    }
+    useEffect(() => {
+        setIsLoading(true);
+        getReportData();
+        console.log(medicines, patientReport)
+    }, []);
 
     let content = null;
-    let fakeReport = {
-        patientName: 'Someone',
-        patientID: '#121121',
-        gender: 'male',
-        email: 'somone@gmail.com',
-        age: 30,
-        mobile: 2424114423,
-        img: profile,
-        doctorName: 'Dr. Chadwick Hugh',
-        diagnosis: 'Cancer',
-        descDiagnosis: 'Some random text Some random text Some random text Some random text',
-        prescription: 'some random text',
-        startDate: '20/12/2021',
-        endDate: null
-    }
-    const getReportData = () => {
-        // get the data for report...
-    }
 
     if(props.show === 'report')
-        content = <Report {...fakeReport}/>
+        content = <Report {...patientReport}/>
     else
-        content = <MedicineScheduler />
+        content = <MedicineScheduler med = {medicines}/>
 
     return (
         <div id = {styles.viewBox}>
@@ -46,7 +62,8 @@ const PatientPage = props => {
             <div id = {styles.leftDiv}>
                 <TopNavBar heading = {props.heading} img = {profile} type = 'patient'/>
                 <div id = {styles.content}>
-                    {errors ? <h1>error occurred!!!</h1>: content}
+                    {isLoading ? <Loader /> : null}
+                    {content}
                 </div>
             </div>
         </div>
