@@ -77,7 +77,7 @@ function PatientList(props) {
                     <img className={styles.img} src={profile} alt="Logo"/>
                     <div className={styles.flitm} ><strong>Name-</strong>{name}</div>
                     <div className="p-2 col-example text-left flitm"><strong>Email-</strong>{email}</div>
-                    <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status}</div>
+                    <div className="p-2 col-example text-left flitm"><strong>Status-</strong>{status === '0' ? 'Critical': 'Moderate'}</div>
                   </div>
                 </div>
               </div>
