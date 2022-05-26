@@ -3,11 +3,11 @@ import {Routes, Route} from 'react-router-dom';
 import styles from './App.module.css';
 import Frontpage from '../Components/Frontpage/Frontpage';
 import DoctorLogin from '../Components/Login_Signup/doctors/login';
-import PatientLogin from '../Components/Login_Signup/Patients/login';
-import Patients from '../Components/Patient/PatientList'
+import PatientLogin from '../Components/Login_Signup/patients/login';
+import Patients from '../Components/Patient/patientList'
 import DoctorPage from './DoctorPage/DoctorPage';
 import PatientPage from  './PaitentPage/PatientPage';
-import PatientSignup from '../Components/Login_Signup/Patients/signupP';
+import PatientSignup from '../Components/Login_Signup/patients/signupP';
 
 function App() {
   return (

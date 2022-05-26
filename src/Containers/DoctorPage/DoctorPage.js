@@ -2,7 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 import styles from './DoctorPage.module.css';
-import PatientList from '../../Components/Patient/PatientList';
+import PatientList from '../../Components/Patient/patientList';
 import Schedule from '../Schedule/Schedule';
 import SideDrawer from "../../Components/SideDrawer/SideDrawer";
 import TopNavBar from '../../Components/Navigation/TopNavbar/TopNavBar';
